@@ -1,7 +1,8 @@
 package alg.sort;
 
-class QSort {
+class QSort implements Sort {
 
+  @Override
   public void sort(int[] as, int b, int e) {
     if (b >= e) return;
     final int ref = as[e];
