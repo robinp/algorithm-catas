@@ -8,6 +8,8 @@ Java
 
 ### Sorting
 - Quicksort
+- Merge sort
+- Heap sort (in place)
 
 Scala
 -----
