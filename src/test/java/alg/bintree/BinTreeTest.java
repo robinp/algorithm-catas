@@ -24,7 +24,8 @@ public class BinTreeTest {
 	final Comparator<Integer> intCmp = defaultComparator();
 	tree.insert(1, intCmp);
 	tree.insert(7, intCmp);
-	tree.insert(2, intCmp);
+	tree.insert(6, intCmp);
+	tree.insert(9, intCmp);
 
 	final List<Integer> elems = new LinkedList<Integer>();
 	final BinTree.Callback<Integer> cb = new BinTree.Callback<Integer>() {
@@ -35,6 +36,19 @@ public class BinTreeTest {
 	};
 	tree.traverse(BinTree.TraversalOrder.INORDER, cb);
 
-	assertArrayEquals(new Integer[] {1, 2, 5, 7}, elems.toArray(new Integer[] {}));
+	assertArrayEquals(new Integer[] {1, 5, 6, 7, 9}, elems.toArray(new Integer[] {}));
+
+	tree.delete(1, intCmp);
+
+	elems.clear();
+	tree.traverse(BinTree.TraversalOrder.INORDER, cb);
+	assertArrayEquals(new Integer[] {5, 6, 7, 9}, elems.toArray(new Integer[] {}));
+
+	tree.delete(7, intCmp);
+
+	elems.clear();
+	tree.traverse(BinTree.TraversalOrder.INORDER, cb);
+	assertArrayEquals(new Integer[] {5, 6, 9}, elems.toArray(new Integer[] {}));
+
     }
 }
